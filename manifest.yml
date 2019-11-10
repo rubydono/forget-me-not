@@ -6,7 +6,7 @@ applications:
     path: .
     command: ruby server.rb
 	routes:
-		- route: forget-me-not.us-south.cf.appdomain.cloud
+	- route: forget-me-not.us-south.cf.appdomain.cloud
 # code_snippet ruby-2b start
     services:
       - redis
