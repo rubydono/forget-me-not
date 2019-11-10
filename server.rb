@@ -1,14 +1,15 @@
 require "sinatra"
 require "json"
-require_relative "redis_driver"
+# require_relative "redis_driver"
 
-db = {
-  match_requests: RedisDriver.from_env("match_requests"),
-  matches: RedisDriver.from_env("matches"),
-  results: RedisDriver.from_env("results"),
-}
+#db = {
+#  match_requests: RedisDriver.from_env("match_requests"),
+#  matches: RedisDriver.from_env("matches"),
+#  results: RedisDriver.from_env("results"),
+#}
 
 delete "/all" do
+raise 'not yet implemented'
   db[:match_requests].clear
   db[:matches].clear
   db[:results].clear
