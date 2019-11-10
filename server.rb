@@ -8,6 +8,10 @@ require "json"
 #  results: RedisDriver.from_env("results"),
 #}
 
+get '/hello-world' do
+  [200, {}, 'hello, world!']
+end
+
 delete "/all" do
 raise 'not yet implemented'
   db[:match_requests].clear
@@ -17,6 +21,7 @@ raise 'not yet implemented'
 end
 
 put "/match_requests/:id" do |id|
+raise 'not yet implemented'
   payload = JSON.parse(request.body.read)
   player_id = payload.fetch("player")
 
@@ -32,6 +37,7 @@ put "/match_requests/:id" do |id|
 end
 
 get "/match_requests/:id" do |match_request_id|
+raise 'not yet implemented'
   match_request = db[:match_requests].detect { |match_request|
     match_request[:id] == match_request_id
   }
@@ -55,6 +61,7 @@ get "/match_requests/:id" do |match_request_id|
 end
 
 get "/matches/:id" do |match_id|
+raise 'not yet implemented'
   match = db[:matches].detect { |match| match[:id] == match_id }
 
   if match
@@ -73,6 +80,7 @@ get "/matches/:id" do |match_id|
 end
 
 post "/results" do
+raise 'not yet implemented'
   result = JSON.parse(request.body.read)
   db[:results] << { match_id: result["match_id"],
                     winner: result["winner"],
