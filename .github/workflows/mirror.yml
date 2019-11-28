@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: us-south.git.cloud.ibb.com
+    - name: us-south.git.cloud.ibm.com
       run: |
         git remote add ibm https://ruby1:${{secrets.ibm_cloud_https_git_token}}@us-south.git.cloud.ibm.com/ruby1/forget-me-not.git
         git push ibm master
