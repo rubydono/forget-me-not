@@ -1,0 +1,31 @@
+def projectRoot = file("${projectDir}/../..")
+def implDir = "${projectRoot}/impl"
+def buildDir = "${projectRoot}/build"
+
+task clean {
+  clean << {
+    fileTree("${buildDir}/web").include('**.rb').each { println it }
+  }
+
+  clean << {
+    delete fileTree("${buildDir}/web").include('**')
+  }
+}
+
+task build {
+  build << {
+    mkdir "${buildDir}/web"
+  }
+
+  build << {
+    copy {
+      from       "${implDir}/web"
+      include    "**/*.rb"
+      into       "${buildDir}/web"
+    }
+  }
+
+  build << {
+    fileTree("${buildDir}").include('**').each { println it }
+  }
+}
