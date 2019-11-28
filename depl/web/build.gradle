@@ -1,5 +1,6 @@
 def projectRoot = file("${projectDir}/../..")
 def implDir = "${projectRoot}/impl"
+def deplDir = "${projectRoot}/depl"
 def buildDir = "${projectRoot}/build"
 
 task clean {
@@ -22,6 +23,15 @@ task build {
       from       "${implDir}/web"
       include    "**/*.rb"
       into       "${buildDir}/web"
+    }
+  }
+
+  build << {
+    copy {
+      from       "${deplDir}/web"
+      include    "**/cf.manifest.yaml"
+      into       "${buildDir}/web"
+      rename     'cf\\.(manifest\\.yaml)$', '$1'
     }
   }
 
