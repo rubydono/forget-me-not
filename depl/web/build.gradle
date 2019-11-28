@@ -3,13 +3,15 @@ def implDir = "${projectRoot}/impl"
 def deplDir = "${projectRoot}/depl"
 def buildDir = "${projectRoot}/build"
 
+defaultTasks 'clean', 'build'
+
 task clean {
   clean << {
-    fileTree("${buildDir}/web").include('**.rb').each { println it }
+    fileTree("${buildDir}/web").each { println it }
   }
 
   clean << {
-    delete fileTree("${buildDir}/web").include('**')
+    delete fileTree("${buildDir}/web")
   }
 }
 
@@ -21,7 +23,7 @@ task build {
   build << {
     copy {
       from       "${implDir}/web"
-      include    "**/*.rb"
+      include    '**/*.rb'
       into       "${buildDir}/web"
     }
   }
@@ -29,13 +31,13 @@ task build {
   build << {
     copy {
       from       "${deplDir}/web"
-      include    "**/cf.manifest.yaml"
+      include    '**/cf.manifest.yaml'
       into       "${buildDir}/web"
       rename     'cf\\.(manifest\\.yaml)$', '$1'
     }
   }
 
   build << {
-    fileTree("${buildDir}").include('**').each { println it }
+    fileTree("${buildDir}").each { println it }
   }
 }
