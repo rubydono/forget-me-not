@@ -10,4 +10,5 @@ group :test do
   gem "rake"
   gem "rack-test"
   gem 'rack', '>= 1.6.11'
+  gem 'rack-protection', '>= 1.5.5'
 end
