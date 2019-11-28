@@ -6,21 +6,21 @@ def buildDir = "${projectRoot}/build"
 defaultTasks 'clean', 'build'
 
 task clean {
-  clean << {
+  doLast {
     fileTree("${buildDir}/web").each { println it }
   }
 
-  clean << {
+  doLast {
     delete fileTree("${buildDir}/web")
   }
 }
 
 task build {
-  build << {
+  doLast {
     mkdir "${buildDir}/web"
   }
 
-  build << {
+  doLast {
     copy {
       from       "${implDir}/web"
       include    '**/*.rb'
@@ -28,7 +28,7 @@ task build {
     }
   }
 
-  build << {
+  doLast {
     copy {
       from       "${deplDir}/web"
       include    '**/cf.manifest.yaml'
@@ -37,7 +37,7 @@ task build {
     }
   }
 
-  build << {
+  doLast {
     fileTree("${buildDir}").each { println it }
   }
 }
