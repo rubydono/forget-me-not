@@ -9,4 +9,5 @@ group :test do
   gem "minitest"
   gem "rake"
   gem "rack-test"
+  gem 'rack', '>= 1.6.11'
 end
